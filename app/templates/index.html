@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <div>
+        <img src="https://pm1.aminoapps.com/8239/6a51670b2a120c6fc476d47de94c46a633445d66r1-637-618v2_hq.jpg" alt="zoro">
+    </div>
+
+    <h1>Usuários</h1>
+    <ul>
+        {% for user in users %}
+            <li>{{user.username}}</li>
+        {% endfor %}
+    </ul>
+    
+</body>
+</html>
