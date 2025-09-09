@@ -21,9 +21,18 @@
         </form>
         
         <h1>Gremistas fiéis</h1>
-        <div style="display: flex;flex-direction: column;align-items: center;">
+        <div style="display: flex;flex-direction: column;align-items: center; margin-bottom: 20px;">
             {% for user in users %}
-                <h2>{{user.username}}</h2>
+            <div style="display: flex;flex-direction: row;align-items: center;column-gap: 4px;margin-bottom: 10px;">
+                <form action="{{url_for('hello.editUser', userId=user.id)}}" method="POST">
+                    <input type="text" id="newUsername" name="newUsername" value="{{user.username}}" required>
+                    <button type="submit">Atualizar</button>
+                </form>
+                <form action="{{url_for('hello.deleteUser', userId=user.id)}}" method="POST">
+                    <button type="submit">Remover</button>
+                </form>
+            </div>
+                
             {% endfor %}
         </div>
 

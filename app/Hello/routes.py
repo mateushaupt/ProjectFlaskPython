@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, url_for
 from ..models import User, db
 hello_bp = Blueprint('hello', __name__)
 
@@ -16,6 +16,26 @@ def newUser():
     db.session.commit()
 
     return redirect('/')
+
+@hello_bp.route('/deleteUser/<int:userId>', methods=['POST'])
+def deleteUser(userId):
+    user = User.query.get(userId)
+
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+
+    return redirect(url_for('hello.index'))
+
+@hello_bp.route('/editUser/<int:userId>', methods=['POST'])
+def editUser(userId):
+    user = User.query.get(userId)
+
+    if user:
+        user.username = request.form['newUsername']
+        db.session.commit()
+
+    return redirect(url_for('hello.index'))
 
 
 
