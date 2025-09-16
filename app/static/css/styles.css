@@ -1,0 +1,88 @@
+body {
+    background-color: #00569f;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+label {
+    color: #ffffff;
+}
+
+.div-main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.div-card {
+    background-color: white;
+    padding: 5px 30px 30px 35px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.div-card h1 {
+    color: #000000;
+}
+
+.div-card label {
+    color: #000000;
+}
+
+.div-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.div-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 4px;
+    margin-bottom: 10px;
+}
+
+button,
+input[type="text"] {
+    padding: 10px 20px;
+    font-size: 14px;     
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+
+button,
+input[type="text"] {
+    border-radius: 5px;
+}
+
+button {
+    background-color: #000000; 
+    color: white;            
+    cursor: pointer;          
+    border: none;             
+}
+
+button:hover {
+    background-color: #000000;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #000000;
+}
+
+.profile-image {
+    border-radius: 100px;
+}
+
+.div-list p {
+    margin-right: 10px;
+    font-size: 18px;
+}

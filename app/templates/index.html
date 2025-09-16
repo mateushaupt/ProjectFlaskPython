@@ -3,44 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
     <title>Hello</title>
 </head>
 <body>
-    <div style="display: flex;align-items: center;flex-direction: column;align-content: center;justify-content: center;">
+    <div class="div-main">
         <h1>Dale Grêmio!</h1>
 
-        <h1>Criar sócio do grêmio</h1>
+        <div class="div-card">
+            <h1>Criar sócio do grêmio</h1>
 
-        <form action="/newUser" method="POST"> 
-            <div style="display: flex;flex-direction: column; margin-bottom: 10px;">
-                <label for="username">Nome</label>
-                <input type="text" id="username" name="username" required>    
-            </div>
-            
-            <button type="submit">Cadastrar</button>
-        </form>
-        
-        <h1>Gremistas fiéis</h1>
-        <div style="display: flex;flex-direction: column;align-items: center; margin-bottom: 20px;">
-            {% for user in users %}
-            <div style="display: flex;flex-direction: row;align-items: center;column-gap: 4px;margin-bottom: 10px;">
-                <form action="{{url_for('hello.editUser', userId=user.id)}}" method="POST">
-                    <input type="text" id="newUsername" name="newUsername" value="{{user.username}}" required>
-                    <button type="submit">Atualizar</button>
-                </form>
-                <form action="{{url_for('hello.deleteUser', userId=user.id)}}" method="POST">
-                    <button type="submit">Remover</button>
-                </form>
-            </div>
+            <form action="/newUser" method="POST"> 
+                <div class="div-field">
+                    <label for="username">Nome</label>
+                    <input type="text" id="username" name="username" required>    
+                </div>
                 
-            {% endfor %}
+                <button type="submit">Cadastrar</button>
+            </form>
         </div>
-
-        <div>
-            <img src="https://pm1.aminoapps.com/8239/6a51670b2a120c6fc476d47de94c46a633445d66r1-637-618v2_hq.jpg" alt="zoro">
+        
+        <div class="div-card">
+            <h1>Gremistas fiéis</h1>
+            <div class="div-main">
+                {% for user in users %}
+                <div class="div-list">
+                    <p>{{ loop.index }} - </p>
+                    <form action="{{url_for('hello.editUser', userId=user.id)}}" method="POST">
+                        <input type="text" id="newUsername" name="newUsername" value="{{user.username}}" required>
+                        <button type="submit">Atualizar</button>
+                    </form>
+                    <form action="{{url_for('hello.deleteUser', userId=user.id)}}" method="POST">
+                        <button type="submit">Remover</button>
+                    </form>
+                </div>
+                    
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="div-card">
+            <h1>O gremista mais fiel</h1>
+            <div>
+                <img class="profile-image" src="https://pm1.aminoapps.com/8239/6a51670b2a120c6fc476d47de94c46a633445d66r1-637-618v2_hq.jpg" alt="zoro">
+            </div>
         </div>
     </div>
     
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     
 </body>
 </html>
