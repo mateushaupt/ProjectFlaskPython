@@ -13,16 +13,32 @@
     <div class="div-main">
         <h1>Dale Grêmio!</h1>
 
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, messages in messages %}
+                    <div class="alert alert-{{category}}">{{message}}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
         <div class="div-card">
             <h1>Criar sócio do grêmio</h1>
-
-            <form action="/newUser" method="POST"> 
+            
+            
+            
+            <form action="{{url_for('hello.newUser')}}" method="POST" novalidate> 
+                {{ form.hidden_tag() }}
+                {{ form.username.label }}
+                {{ form.username(class="form-control", placeholder="Nome") }}
+                {{ form.submit(class="btn-submit", value="Criar") }}
+                <!--
                 <div class="div-field">
                     <label for="username">Nome</label>
                     <input type="text" id="username" name="username" required>    
                 </div>
                 
                 <button type="submit">Cadastrar</button>
+                -->
             </form>
         </div>
         
@@ -32,11 +48,13 @@
                 {% for user in users %}
                 <div class="div-list">
                     <p>{{ loop.index }} - </p>
-                    <form action="{{url_for('hello.editUser', userId=user.id)}}" method="POST">
-                        <input type="text" id="newUsername" name="newUsername" value="{{user.username}}" required>
-                        <button type="submit">Atualizar</button>
+                    <form action="{{url_for('hello.editUser', userId=user.id)}}" method="POST" novalidate>
+                        
+                        {{ form.hidden_tag() }}
+                        {{ form.username(class="form-control", placeholder="Nome", value=user.username) }}
+                        {{ form.submit(class="btn-submit", value="Atualizar") }}
                     </form>
-                    <form action="{{url_for('hello.deleteUser', userId=user.id)}}" method="POST">
+                    <form action="{{url_for('hello.deleteUser', userId=user.id)}}" method="POST" novalidate>
                         <button type="submit">Remover</button>
                     </form>
                 </div>

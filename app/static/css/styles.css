@@ -52,6 +52,7 @@ label {
 }
 
 button,
+input[type="submit"],
 input[type="text"] {
     padding: 10px 20px;
     font-size: 14px;     
@@ -60,11 +61,13 @@ input[type="text"] {
 }
 
 button,
+input[type="submit"],
 input[type="text"] {
     border-radius: 5px;
 }
 
-button {
+button,
+input[type="submit"] {
     background-color: #000000; 
     color: white;            
     cursor: pointer;          
